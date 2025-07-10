@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import Button from '../components/Button';
-
-const ArrowRightIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-);
-
-const CheckCircleIcon: React.FC<{className?: string}> = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-);
 
 
 const ServiceSection: React.FC<{ title: string; children: React.ReactNode; linkTo: string }> = ({ title, children, linkTo }) => (
@@ -17,7 +10,7 @@ const ServiceSection: React.FC<{ title: string; children: React.ReactNode; linkT
       <div className="md:col-span-1">
         <h3 className="text-2xl font-bold text-primary">{title}</h3>
         <Button as={Link} to={linkTo} variant="outline" className="mt-4 text-sm">
-          Learn More <ArrowRightIcon className="w-4 h-4 ml-2"/>
+          Learn More <ArrowRight className="w-4 h-4 ml-2"/>
         </Button>
       </div>
       <div className="md:col-span-2">
@@ -50,28 +43,28 @@ const ServicesPage: React.FC = () => {
         <ServiceSection title="Fractional Hires" linkTo="/services/fractional-talent">
           <p className="text-slate-600 text-lg mb-6">Gain access to senior-level expertise without the cost of a full-time executive. Our fractional model provides the strategic leadership you need, when you need it.</p>
           <ul className="space-y-3 text-slate-600">
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Fractional CHRO, HR Director, Head of Talent</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>HR Business Partners</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Talent Acquisition and Management Specialists</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Fractional CHRO, HR Director, Head of Talent</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>HR Business Partners</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Talent Acquisition and Management Specialists</li>
           </ul>
         </ServiceSection>
         
         <ServiceSection title="HR Advisory" linkTo="/services/hr-advisory">
           <p className="text-slate-600 text-lg mb-6">Strengthen your HR foundation with our expert advisory services. We help you design and implement practices that attract, retain, and develop top talent.</p>
            <ul className="space-y-3 text-slate-600">
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>HR framework and policies design</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Performance management systems</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Compensation and benefits analysis</li>
-             <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Employee relations and compliance</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>HR framework and policies design</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Performance management systems</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Compensation and benefits analysis</li>
+             <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Employee relations and compliance</li>
           </ul>
         </ServiceSection>
 
         <ServiceSection title="Leadership & Team Coaching" linkTo="/services/coaching">
           <p className="text-slate-600 text-lg mb-6">Invest in your most valuable asset—your people. Our coaching programs are designed to enhance leadership capabilities, improve team dynamics, and foster a culture of high performance.</p>
            <ul className="space-y-3 text-slate-600">
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Executive and leadership coaching</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Team effectiveness workshops</li>
-            <li className="flex items-center"><CheckCircleIcon className="w-5 h-5 text-secondary mr-3"/>Talent development and succession planning</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Executive and leadership coaching</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Team effectiveness workshops</li>
+            <li className="flex items-center"><CheckCircle className="w-5 h-5 text-secondary mr-3"/>Talent development and succession planning</li>
           </ul>
         </ServiceSection>
       </section>

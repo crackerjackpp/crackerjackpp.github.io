@@ -1,9 +1,6 @@
 import React from 'react';
+import { Check } from 'lucide-react';
 import { OUR_PROMISES } from '../constants';
-
-const CheckIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
 
 const AboutUsPage: React.FC = () => {
   return (
@@ -39,7 +36,7 @@ const AboutUsPage: React.FC = () => {
                 {OUR_PROMISES.map((promise) => (
                     <div key={promise.title} className="text-center">
                         <div className="flex items-center justify-center h-12 w-12 rounded-md bg-secondary text-white mx-auto">
-                            <CheckIcon className="w-6 h-6"/>
+                            <Check className="w-6 h-6"/>
                         </div>
                         <h3 className="mt-5 text-lg font-semibold text-primary">{promise.title}</h3>
                         <p className="mt-2 text-base text-slate-600">{promise.description}</p>

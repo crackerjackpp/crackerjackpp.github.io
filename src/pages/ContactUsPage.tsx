@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
+import { ContactFormData } from '../types';
 
 const ContactUsPage: React.FC = () => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<ContactFormData>({
         name: '',
         company: '',
         email: '',
@@ -10,17 +11,26 @@ const ContactUsPage: React.FC = () => {
         message: ''
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         // In a real application, you would handle form submission here.
         // For this static site, we'll just log the data.
         console.log('Form submitted:', formData);
         alert('Thank you for your message! We will get back to you shortly.');
         setFormData({ name: '', company: '', email: '', phone: '', message: '' });
+        setIsSubmitting(false);
     }
 
   return (
@@ -40,29 +50,31 @@ const ContactUsPage: React.FC = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-slate-700">Name</label>
-                            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary"/>
+                            <input type="text" name="name" id="name" required value={formData.name} onChange={handleChange} className="input-field"/>
                         </div>
                         <div>
                             <label htmlFor="company" className="block text-sm font-medium text-slate-700">Company</label>
-                            <input type="text" name="company" id="company" value={formData.company} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary"/>
+                            <input type="text" name="company" id="company" value={formData.company} onChange={handleChange} className="input-field"/>
                         </div>
                     </div>
                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email</label>
-                            <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary"/>
+                            <input type="email" name="email" id="email" required value={formData.email} onChange={handleChange} className="input-field"/>
                         </div>
                         <div>
                             <label htmlFor="phone" className="block text-sm font-medium text-slate-700">Phone</label>
-                            <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary"/>
+                            <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className="input-field"/>
                         </div>
                     </div>
                     <div>
                         <label htmlFor="message" className="block text-sm font-medium text-slate-700">How can we help?</label>
-                        <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary"></textarea>
+                        <textarea name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} className="input-field"></textarea>
                     </div>
                     <div>
-                        <Button type="submit" variant="primary" className="w-full sm:w-auto">Send Message</Button>
+                        <Button type="submit" variant="primary" loading={isSubmitting} className="w-full sm:w-auto">
+                            {isSubmitting ? 'Sending...' : 'Send Message'}
+                        </Button>
                     </div>
                 </form>
             </div>

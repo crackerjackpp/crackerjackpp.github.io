@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Check } from 'lucide-react';
 import Button from '../components/Button';
 import { DISTINCTIONS } from '../constants';
 import Card from '../components/Card';
-
-const CheckIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="20 6 9 17 4 12"></polyline></svg>
-);
 
 const HomePage: React.FC = () => {
   return (
@@ -92,7 +89,7 @@ const HomePage: React.FC = () => {
                 <ul className="mt-8 space-y-4">
                     {DISTINCTIONS.map((distinction, index) => (
                         <li key={index} className="flex items-start">
-                           <CheckIcon className="w-6 h-6 text-secondary flex-shrink-0 mr-3 mt-1"/>
+                           <Check className="w-6 h-6 text-secondary flex-shrink-0 mr-3 mt-1"/>
                             <span className="text-slate-600 text-lg">{distinction}</span>
                         </li>
                     ))}

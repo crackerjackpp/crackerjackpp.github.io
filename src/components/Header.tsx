@@ -1,19 +1,8 @@
 import React, { useState } from 'react';
 import { Link, NavLink as RouterNavLink } from 'react-router-dom';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import Button from './Button';
-
-const ChevronDownIcon: React.FC<{className?: string}> = ({ className }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m6 9 6 6 6-6"/></svg>
-);
-
-const MenuIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-);
-
-const XIcon: React.FC<{className?: string}> = ({ className }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-);
 
 
 const Header: React.FC = () => {
@@ -45,7 +34,7 @@ const Header: React.FC = () => {
                 <div key={link.name} className="relative group">
                   <span className="flex items-center py-2 text-sm font-medium text-slate-700 cursor-pointer hover:text-secondary">
                     {link.name}
-                    <ChevronDownIcon className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
+                    <ChevronDown className="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" />
                   </span>
                   <div className="absolute left-0 mt-2 w-56 origin-top-left bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                     <div className="py-1">
@@ -73,7 +62,7 @@ const Header: React.FC = () => {
 
           <div className="lg:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-                {isMenuOpen ? <XIcon className="w-6 h-6"/> : <MenuIcon className="w-6 h-6"/> }
+                {isMenuOpen ? <X className="w-6 h-6"/> : <Menu className="w-6 h-6"/> }
             </button>
           </div>
         </div>
